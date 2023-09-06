@@ -1,22 +1,20 @@
-import React from 'react';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Home from './pages/home/Home';
-import { ChakraProvider } from '@chakra-ui/react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
 
-export default function App() {
+const Home = React.lazy(() => import("./pages/Home"));
+const Login = React.lazy(() => import("./pages/Login"));
+const Register = React.lazy(() => import("./pages/Register"));
+
+function App() {
   return (
-    <>
-      <ChakraProvider>
-        <Router>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </Router>
-      </ChakraProvider>
-    </>
+    <Suspense>
+      <Routes>
+        <Route path="/" Component={Home}></Route>
+        <Route path="/login" Component={Login}></Route>
+        <Route path="/register" Component={Register}></Route>
+      </Routes>
+    </Suspense>
   );
 }
+
+export default App;

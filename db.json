@@ -1,5 +1,12 @@
 {
-    "users": [],
-    "posts": [],
-    "likes": []
+  "users": [
+    {
+      "username": "abc",
+      "email": "abc@abc.xyz",
+      "password": "abcdef",
+      "id": 1
+    }
+  ],
+  "posts": [],
+  "likes": []
 }
